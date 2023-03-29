@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+var cookieParser = require('cookie-parser')
 
 const { connection } = require("./config/db");
 const { sellerRouter } = require("./routes/seller.routes");
@@ -16,7 +17,7 @@ app.use(
     origin: "*",
   })
 );
-
+app.use(cookieParser())
 
 app.use("/auth", authRouter);
 app.use(authenticate);
